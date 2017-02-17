@@ -1,12 +1,10 @@
 project(oldscopehistoplotter)
 
-list(APPEND CMAKE_PREFIX_PATH $ENV{ROOTSYS})
+list(APPEND CMAKE_MODULE_PATH $ENV{ROOTSYS}/etc/cmake)
 
 find_package(ROOT REQUIRED COMPONENTS Hist Gpad Graf MathCore) 
 
-include(${ROOT_USE_FILE})
-
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+include_directories(${ROOT_INCLUDE_DIRS})
 
 add_library(plotter SHARED plotter.cpp)
 target_link_libraries(plotter ${ROOT_LIBRARIES})
